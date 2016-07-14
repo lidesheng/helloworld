@@ -15,13 +15,13 @@
 <body>
     <table>
         <tr>
-            <td><a href="surveyAdd">add</a></td>
+            <td><a href="survey">add</a></td>
         </tr>
         <c:forEach items="${surveys}" var="survey">
             <tr>
                 <td>${survey.name}</td>
                 <td><a href="statistics/${survey.id}">statistics</a></td>
-                <td><a href="survey/${survey.id}">survey</a></td>
+                <td><a href="question/${survey.id}">survey</a></td>
             </tr>
         </c:forEach>
     </table>

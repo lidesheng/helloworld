@@ -23,18 +23,18 @@ public class SurveyController {
     @Resource(name = "surveyService")
     private SurveyServiceImpl surveyService;
 
-    @RequestMapping(value = "surveyAdd", method = RequestMethod.GET)
-    public String survey(Survey survey) {
-//        Survey survey = new Survey();
-        System.out.println(survey);
-        survey.setName("survey1");
-        int surveyId = surveyService.save(survey);
-        return "redirect:/question/" + surveyId;
+    @RequestMapping(value = "survey", method = RequestMethod.GET)
+    public String survey(Model model) {
+        model.addAttribute("survey", new Survey());
+        return "survey";
     }
 
-    @RequestMapping(value = "survey/{surveyId}", method = RequestMethod.GET)
-    public String survey(@PathVariable("surveyId") int surveyId) {
-        return "redirect:/question/" + surveyId;
+    @RequestMapping(value = "survey", method = RequestMethod.POST)
+    public String surveyAdd(Survey survey) {
+        System.out.println(survey);
+        survey.setEnabled(true);
+        int surveyId = surveyService.save(survey);
+        return "redirect:/surveys";
     }
 
     @RequestMapping(value = "surveys", method = RequestMethod.GET)
@@ -42,14 +42,6 @@ public class SurveyController {
         List<Survey> surveys = surveyService.getAll();
         model.addAttribute("surveys", surveys);
         return "surveys";
-    }
-
-    @RequestMapping(value = "survey", method = RequestMethod.POST)
-    @ResponseBody
-    public String surveyAdd(Survey survey) {
-        System.out.println(survey);
-        surveyService.save(survey);
-        return "save success!";
     }
 
     @RequestMapping(value = "survey", method = RequestMethod.PUT)

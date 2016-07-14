@@ -13,58 +13,12 @@
     <title>question</title>
 </head>
 <body>
-    <form:form commandName="question" action="question" method="post">
+    <form:form commandName="survey" action="survey" method="post">
         <table>
             <tr>
-                <td>performance:</td>
+                <td>surveyName:</td>
                 <td>
-                    <form:select path="performance">
-                        <%--<form:option value="10"/>
-                        <form:option value="9"/>
-                        <form:option value="8"/>
-                        <form:option value="7"/>
-                        <form:option value="6"/>
-                        <form:option value="5"/>
-                        <form:option value="4"/>
-                        <form:option value="3"/>
-                        <form:option value="2"/>
-                        <form:option value="1"/>--%>
-                        <form:options items="${valueList}" itemValue="value" itemLabel="name"/>
-                    </form:select>
-                </td>
-            </tr>
-            <tr>
-                <td>atmosphere:</td>
-                <td>
-                    <form:select path="atmosphere">
-                        <form:option value="10"/>
-                        <form:option value="9"/>
-                        <form:option value="8"/>
-                        <form:option value="7"/>
-                        <form:option value="6"/>
-                        <form:option value="5"/>
-                        <form:option value="4"/>
-                        <form:option value="3"/>
-                        <form:option value="2"/>
-                        <form:option value="1"/>
-                    </form:select>
-                </td>
-            </tr>
-            <tr>
-                <td>superStar:</td>
-                <td>
-                    <form:select path="superStar">
-                        <form:option value="Li, Desheng"/>
-                        <form:option value="2"/>
-                        <form:option value="3"/>
-                        <form:option value="4"/>
-                        <form:option value="5"/>
-                        <form:option value="6"/>
-                        <form:option value="7"/>
-                        <form:option value="8"/>
-                        <form:option value="9"/>
-                        <form:option value="10"/>
-                    </form:select>
+                    <form:input path="name"/>
                 </td>
             </tr>
         </table>

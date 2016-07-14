@@ -1,10 +1,8 @@
 package org.lee.survey.controller;
 
 import org.lee.survey.dao.QuestionDaoImpl;
-import org.lee.survey.obj.ObjWrapperForSort;
 import org.lee.survey.obj.OptionValue;
 import org.lee.survey.obj.Question;
-import org.lee.survey.obj.Statistics;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-import java.util.*;
 
 
 /**
@@ -39,9 +36,10 @@ public class QuestionController {
     @ResponseBody
     public String questionEdit(Question question, HttpSession session) {
         System.out.println(question);
-        Object questioned = session.getAttribute("questioned");
+        String surveyId = String.valueOf(question.getSurveyId());
+        Object questioned = session.getAttribute(surveyId);
         if (questioned == null) {
-            session.setAttribute("questioned", 1);
+            session.setAttribute(surveyId, surveyId);
         } else {
             return "you have finished this question, please don't submit more than once!";
         }
